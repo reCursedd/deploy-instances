@@ -1,12 +1,15 @@
 ---
+# tasks file for checkbox
 - hosts: all
+  become: true
+  gather_facts: False
+
 
   vars:
     ansible_distribution_release: "xenial"
     mongodb_version: "3.6"
     checkbox_folder: "/home/{{ ansible_user }}/checkbox.io"
-    
-# tasks file for checkbox
+
   tasks:
   - name: Install node on server
     become: true
@@ -95,13 +98,13 @@
   #       path: "{{checkbox_folder}}"
   #   register: checkbox_repo
 
-  # - name: Cloning checkbox repository
-  #   become: true
-  #   git:
-  #       repo: "https://github.com/arpitashekhar/checkbox.io.git"
-  #       dest: "{{checkbox_folder}}"
-  #       update: no
-  #       force: yes
+  - name: Cloning checkbox repository
+    become: true
+    git:
+        repo: "https://github.com/arpitashekhar/checkbox.io.git"
+        dest: "{{checkbox_folder}}"
+        update: no
+        force: yes
     #when: checkbox_repo.stat.isdir is not defined
 
   - name: Run npm install to install dependencies 
