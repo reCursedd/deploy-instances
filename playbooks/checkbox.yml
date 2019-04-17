@@ -113,6 +113,17 @@
     args:
       chdir: "/home/{{ ansible_user }}/checkbox.io/server-side/site"
 
+  - name: Install packages for New Relic 
+    become: true
+    command: npm install newrelic
+    args: 
+      chdir: "/home/{{ ansible_user }}/checkbox.io/server-side/site" 
+  
+  - name: line insert
+    lineinfile:
+      path: /home/{{ ansible_user }}/checkbox.io/server-side/site/server.js
+      line: 'require('newrelic');'
+      insertbefore: BOF
 
   - name: update location of public_html into default
     become: true
@@ -136,6 +147,12 @@
         dest: "/etc/nginx/nginx.conf"
         remote_src: true
         mode: 0644
+
+  - name: Transfer newrelic.js template
+    template:
+    src: "/home/{{ ansible_user }}/deploy-instances/templates/newrelic.js"
+    dest: "/home/{{ ansible_user }}/checkbox.io/server-side/site/newrelic.js"
+    force: yes
 
   - name: Install forever (to run Node.js app)
     become: true
