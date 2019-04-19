@@ -150,9 +150,9 @@
 
   - name: Transfer newrelic.js template
     template:
-    src: "/home/{{ ansible_user }}/deploy-instances/templates/newrelic.js"
-    dest: "/home/{{ ansible_user }}/checkbox.io/server-side/site/newrelic.js"
-    force: yes
+      src: "/home/{{ ansible_user }}/deploy-instances/templates/newrelic.js"
+      dest: "/home/{{ ansible_user }}/checkbox.io/server-side/site/newrelic.js"
+      force: yes
 
   - name: Install forever (to run Node.js app)
     become: true
