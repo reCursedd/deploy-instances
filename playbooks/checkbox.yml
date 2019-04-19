@@ -122,7 +122,7 @@
   - name: line insert
     lineinfile:
       path: /home/{{ ansible_user }}/checkbox.io/server-side/site/server.js
-      line: 'require('newrelic');
+      line: require('newrelic');
       insertbefore: BOF
 
   - name: update location of public_html into default
