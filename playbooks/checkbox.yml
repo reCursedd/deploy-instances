@@ -10,30 +10,7 @@
     mongodb_version: "3.6"
     checkbox_folder: "/home/{{ ansible_user }}/checkbox.io"
 
-  # tasks:
-  # - name: Install node on server
-  #   become: true
-  #   apt:
-  #       name: nodejs
-  #       update_cache: yes
-
-  # - name: Install npm on server
-  #   become: true
-  #   apt:
-  #       name: npm
-  #       state: present
-
-  # - name: Symlink nodejs and node
-  #   become: true
-  #   file:
-  #       src: /usr/bin/nodejs
-  #       dest: /usr/bin/node
-  #       state: link
   tasks:
-  - name: Apt update
-    become: true
-    shell: apt-get update
-  
   - name: Install node on server
     become: true
     shell: curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
