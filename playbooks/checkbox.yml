@@ -10,7 +10,7 @@
     mongodb_version: "3.6"
     checkbox_folder: "/home/{{ ansible_user }}/checkbox.io"
 
-  # tasks:
+  tasks:
   # - name: Install node on server
   #   become: true
   #   apt:
