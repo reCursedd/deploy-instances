@@ -168,12 +168,12 @@
       dest: "{{checkbox_folder}}/server-side/site/newrelic.js"
       force: yes
 
-  - name: line insert
-    become: true
-    lineinfile:
-      path: "{{checkbox_folder}}/server-side/site/server.js"
-      line: require('newrelic');
-      insertbefore: BOF
+  # - name: line insert
+  #   become: true
+  #   lineinfile:
+  #     path: "{{checkbox_folder}}/server-side/site/server.js"
+  #     line: require('newrelic');
+  #     insertbefore: BOF
 
   - name: Install forever (to run Node.js app)
     become: true
